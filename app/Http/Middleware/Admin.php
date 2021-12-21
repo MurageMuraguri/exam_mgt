@@ -16,6 +16,10 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(auth()->user()->isAdmin == true) {
+            return $next($request);
+        }
+
+        return back()->with('error',"Admin clearance required!");
     }
 }
