@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Admin
+class Role_external_examiner
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->isAdmin == true) {
+        if(auth()->user()->role == 1){
             return $next($request);
         }
 
-        return back()->with('error',"Admin clearance required!");
+        return redirect('login')->with('error',"Check your credentials");
     }
 }
