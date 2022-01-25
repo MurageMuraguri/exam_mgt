@@ -9,7 +9,7 @@
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
-                        {{ Auth::user()->title }}.{{ Auth::user()->last_name }}
+                        {{ Auth::user()->title }} {{ Auth::user()->last_name }}
                     </li>
                     <li class="nav-item dropdown pe-2 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -24,7 +24,7 @@
                                 </a>
                                 </div>
                             </li>
-                            <li class="mb-2">
+                            <li class="mb-2" style="padding-left: 5px">
                                 <a class="dropdown-item border-radius-md" href="j{{ route('logout') }}"  onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
                                                     <span class="d-sm-inline d-none">  {{ __('Logout') }}</span>
