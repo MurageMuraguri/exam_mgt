@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register' => false]);
-Route::get('/registration/{token}', 'UsersController@registration_view')->name('registration');
-Route::POST('/registration', 'Auth\RegisterController@register')->name('accept');
+Route::get('/registration/{token}', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('registration');
+Route::post('/registeruser', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
