@@ -16,10 +16,10 @@ class Role_examination_officer
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role == 2){
+        if(auth()->user()->role == 2 || auth()->user()->role == 3){
             return $next($request);
         }
 
-        return redirect('login')->with('error',"Check your credentials");
+        return redirect('login')->with('error',"You are unauthorized");
     }
 }

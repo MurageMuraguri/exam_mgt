@@ -30,3 +30,7 @@ Route::post('/Users_officer',[App\Http\Controllers\ExamOfficer::class, 'officer_
 //Profile
 Route::get('/profile',[\App\Http\Controllers\ProfileController::class,'index'])->name('profile');
 Route::post('/updateInfo',[\App\Http\Controllers\ProfileController::class,'updateInfo'])->name('updateInfo');
+
+//Exam_period
+Route::get('/exam_period',[\App\Http\Controllers\ExamPeriodController::class,'index'])->name('exam_period');
+Route::post('/exam_period_insert',[\App\Http\Controllers\ExamPeriodController::class,'insert'])->name('create_exam_period');

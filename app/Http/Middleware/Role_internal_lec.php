@@ -20,6 +20,6 @@ class Role_internal_lec
             return $next($request);
         }
 
-        return redirect('login')->with('error',"Check your credentials");
+        return redirect('login')->with('error',"You are unauthorized");
     }
 }
