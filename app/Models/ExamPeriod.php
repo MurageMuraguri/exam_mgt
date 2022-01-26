@@ -20,7 +20,7 @@ class ExamPeriod extends Model
      *Status -> 0-sent successfully, 1-accepted,2-late
      */
     protected $fillable = [
-        'session','academic_year','start_date','end_date','name','created_at','updated_at'
+        'id','session','academic_year','start_date','end_date','name','created_at','updated_at'
     ];
 
     /**

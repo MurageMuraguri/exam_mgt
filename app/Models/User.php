@@ -21,7 +21,7 @@ class User extends Authenticatable
      * role - 0 internal/lec, 1 external examiner, 2 Examination officer ,3 admin
      */
     protected $fillable = [
-        'first_name','last_name','title','email','email_verified_at','password','role','gender','specialization','isAdmin'
+        'id','first_name','last_name','title','email','email_verified_at','password','role','gender','specialization','isAdmin'
     ];
 
     /**

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Exam extends Model
+class Invigilation extends Model
 {
     use HasFactory;
 
-    protected $table = 'exam';
+    protected $table = 'invigilation';
     /**
      * The attributes that are mass assignable.
      *
@@ -20,7 +20,7 @@ class Exam extends Model
      *Status -> 0-sent successfully, 1-accepted,2-late
      */
     protected $fillable = [
-        'id','lecturer_id','external_examiner_id','name','exam_period_id','exam_date','lecturer_deadline_1','lecturer_deadline_2','external_examiner_deadline','status','external_approval','final_draft','created_at','updated_at'
+       'id','exam_id','lecturer_id','created_at','updated_at'
     ];
 
     /**

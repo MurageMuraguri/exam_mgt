@@ -38,3 +38,4 @@ Route::post('/exam_period_insert',[\App\Http\Controllers\ExamPeriodController::c
 //Exam
 Route::get('/exams',[\App\Http\Controllers\ExamOfficer::class,'exams'])->name('exams');
 Route::post('/insert_exam',[\App\Http\Controllers\ExamOfficer::class,'insert_exam'])->name('insert_exam');
+Route::get('/exams/delete/{exam_id}',[\App\Http\Controllers\ExamOfficer::class,'delete_exam']);

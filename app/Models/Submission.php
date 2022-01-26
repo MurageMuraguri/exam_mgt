@@ -20,7 +20,7 @@ class Submission extends Model
      *Status -> 0-sent successfully, 1-accepted,2-late
      */
     protected $fillable = [
-        'exam_id','lecturer_id','external_examiner_id','location','uploaded_by','created_at','updated_at'
+        'id','exam_id','lecturer_id','external_examiner_id','location','uploaded_by','created_at','updated_at'
     ];
 
     /**

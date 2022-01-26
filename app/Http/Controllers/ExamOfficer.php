@@ -69,12 +69,18 @@ class ExamOfficer extends Controller
         $lecturers = User::where('role',0)->get();
         $examiners = User::where('role',1)->get();
         $periods = ExamPeriod::all();
-
+        $latest = ExamPeriod::latest()->first();
+        $exams=Exam::where('exam_period_id',$latest->id)
+                    ->leftjoin('users','users.id','=','exam.lecturer_id')
+                    ->get();
+//        dd($exams);
         return view('exam',
             [
             'lecturers'=>$lecturers,
             'examiners'=>$examiners,
-            'periods'=>$periods
+            'periods'=>$periods,
+             'exams'=>$exams,
+             'exam_period'=>$latest->name
             ]
         );
 
@@ -100,5 +106,13 @@ class ExamOfficer extends Controller
         }else{
             return back()->with('error','Creation unsuccessful, try again');
         }
+    }
+
+    public function delete_exam($exam_id){
+        $exam_delete = Exam::findorFail($exam_id);
+        $exam_delete->delete();
+
+        return back()->with('status','Exam deleted successfully');
+
     }
 }

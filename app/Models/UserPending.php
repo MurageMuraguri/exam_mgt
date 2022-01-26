@@ -20,7 +20,7 @@ class UserPending extends Model
      *Status -> 0-sent successfully, 1-accepted,2-late
      */
     protected $fillable = [
-        'pending_email','pending_role','by_whom','token','status','created_at','updated_at'
+        'id','pending_email','pending_role','by_whom','token','status','created_at','updated_at'
     ];
 
     /**
