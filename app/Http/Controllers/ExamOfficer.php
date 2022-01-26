@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\InvitedUser;
+use App\Mail\SendExamiOnExamCreate;
+use App\Mail\SendLecOnExamCreate;
+use App\Models\Exam;
+use App\Models\ExamPeriod;
+use App\Models\User;
 use App\Models\UserPending;
 use Illuminate\Http\Request;
 use App\Http\Middleware\Role_examination_officer;
@@ -58,5 +63,42 @@ class ExamOfficer extends Controller
 
         return redirect()->back()->with('success','New user invited successfully');
 
+    }
+
+    public function exams(){
+        $lecturers = User::where('role',0)->get();
+        $examiners = User::where('role',1)->get();
+        $periods = ExamPeriod::all();
+
+        return view('exam',
+            [
+            'lecturers'=>$lecturers,
+            'examiners'=>$examiners,
+            'periods'=>$periods
+            ]
+        );
+
+    }
+
+    public function insert_exam(Request $request){
+        if(Exam::create([
+            'name'=>$request->input('name'),
+            'exam_period_id'=>$request->input('period'),
+            'exam_date'=>$request->input('date'),
+            'lecturer_id'=>$request->input('lec'),
+            'external_examiner_id'=>$request->input('examiner'),
+            'lecturer_deadline_1'=>$request->input('deadline_1'),
+            'lecturer_deadline_2'=>$request->input('deadline_2'),
+            'external_examiner_deadline'=>$request->input('deadline_3')
+        ])){
+            $lec_email = User::where('id',$request->input('lec'))->get('email');
+            $examiner_email = User::where('id',$request->input('examiner'))->get('email');
+
+            Mail::to($lec_email)->send(new sendLecOnExamCreate($request->input('name'),$request->input('deadline_1'),$request->input('deadline_2')));
+            Mail::to($examiner_email)->send(new sendExamiOnExamCreate($request->input('name'),$request->input('deadline_3')));
+            return back() -> with('status','New exam period created');
+        }else{
+            return back()->with('error','Creation unsuccessful, try again');
+        }
     }
 }

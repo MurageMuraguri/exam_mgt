@@ -34,3 +34,7 @@ Route::post('/updateInfo',[\App\Http\Controllers\ProfileController::class,'updat
 //Exam_period
 Route::get('/exam_period',[\App\Http\Controllers\ExamPeriodController::class,'index'])->name('exam_period');
 Route::post('/exam_period_insert',[\App\Http\Controllers\ExamPeriodController::class,'insert'])->name('create_exam_period');
+
+//Exam
+Route::get('/exams',[\App\Http\Controllers\ExamOfficer::class,'exams'])->name('exams');
+Route::post('/insert_exam',[\App\Http\Controllers\ExamOfficer::class,'insert_exam'])->name('insert_exam');
