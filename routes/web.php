@@ -44,3 +44,7 @@ Route::get('/exams/delete/{exam_id}',[\App\Http\Controllers\ExamOfficer::class,'
 Route::get('/my_activities',[\App\Http\Controllers\InternalLecController::class,'index'])->name('my_activities');
 Route::get('/my_schedule',[\App\Http\Controllers\InternalLecController::class,'schedule'])->name('my_schedule');
 Route::get('/my_deadline',[\App\Http\Controllers\InternalLecController::class,'deadlines'])->name('my_deadline');
+
+//External examiner
+Route::get('/my_exams',[\App\Http\Controllers\ExternalExaminerController::class,'index'])->name('my_exams');
+Route::get('/ex_deadline',[\App\Http\Controllers\ExternalExaminerController::class,'deadlines'])->name('ex_deadline');
