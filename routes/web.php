@@ -26,6 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Examination officer routes
 Route::get('/Users_officer',[App\Http\Controllers\ExamOfficer::class, 'usersOfficer'])->name('Users_officer');
 Route::post('/Users_officer',[App\Http\Controllers\ExamOfficer::class, 'officer_newUser'])->name('Users_officer');
+Route::get('/user/delete/{id}',[\App\Http\Controllers\ExamOfficer::class,'delete_user']);
 
 //Profile
 Route::get('/profile',[\App\Http\Controllers\ProfileController::class,'index'])->name('profile');
@@ -34,11 +35,12 @@ Route::post('/updateInfo',[\App\Http\Controllers\ProfileController::class,'updat
 //Exam_period
 Route::get('/exam_period',[\App\Http\Controllers\ExamPeriodController::class,'index'])->name('exam_period');
 Route::post('/exam_period_insert',[\App\Http\Controllers\ExamPeriodController::class,'insert'])->name('create_exam_period');
+Route::get('/exam_period/delete/{exam_id}',[\App\Http\Controllers\ExamPeriodController::class,'delete_exam_period']);
 
 //Exam
 Route::get('/exams',[\App\Http\Controllers\ExamOfficer::class,'exams'])->name('exams');
 Route::post('/insert_exam',[\App\Http\Controllers\ExamOfficer::class,'insert_exam'])->name('insert_exam');
-Route::get('/exams/delete/{exam_id}',[\App\Http\Controllers\ExamOfficer::class,'delete_exam']);
+Route::get('/exams/delete/{id}',[\App\Http\Controllers\ExamOfficer::class,'delete_exam']);
 
 //Internal Lec
 Route::get('/my_activities',[\App\Http\Controllers\InternalLecController::class,'index'])->name('my_activities');

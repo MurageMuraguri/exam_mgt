@@ -5,41 +5,98 @@
         <div class="row">
             <div class="col-md-2">
 
+
+
             </div>
-            <div class="col-md-10">
-                <div class="row" >
-                    <div class="col-lg-6 col-md-6 mt-4 mb-4">
-                        <div class="card z-index-2 ">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                            </div>
-                            <div class="card-body">
-                                <h6 class="mb-0 ">Website Views</h6>
-                                <p class="text-sm ">Last Campaign Performance</p>
-                                <hr class="dark horizontal">
-                                <div class="d-flex ">
-                                    <i class="material-icons text-sm my-auto me-1">schedule</i>
-                                    <p class="mb-0 text-sm"> campaign sent 2 days ago </p>
-                                </div>
-                            </div>
+            <div class="col-10">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Users</h6>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 mt-4 mb-4">
-                        <div class="card z-index-2  ">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">First Name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                @if(!$users)
+                                    No exams yet
+                                @else
 
-                            </div>
-                            <div class="card-body">
-                                <h6 class="mb-0 "> Daily Sales </h6>
-                                <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales. </p>
-                                <hr class="dark horizontal">
-                                <div class="d-flex ">
-                                    <i class="material-icons text-sm my-auto me-1">schedule</i>
-                                    <p class="mb-0 text-sm"> updated 4 min ago </p>
-                                </div>
-                            </div>
+                                    <tr>
+                                        @foreach($users as $user)
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h5 class="mb-0 text-sm">{{$user->first_name}}</h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h5 class="mb-0 text-sm">{{$user->last_name}}</h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h5 class="mb-0 text-sm">
+                                                            {{$user->title}}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h5 class="mb-0 text-sm">
+                                                            {{$user->email}}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h5 class="mb-0 text-sm">
+                                                            @switch($user->role)
+                                                                @case(0)
+                                                                Internal Lecturer
+                                                                @break
+                                                                @case(1)
+                                                                External Examiner
+                                                                @break
+                                                                @case(2)
+                                                                Examination Officer
+                                                                @break
+                                                                @default
+                                                                Administrator
+                                                                @endswitch
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a type="button" class="btn btn-sm bg-gradient-danger"  href="{{URL::to('user/delete')}}{{'/'.$user->id}}">Delete</a>
+                                            </td>
+                                    </tr>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -71,6 +128,7 @@
                             <select  multiple="" class="form-control" id="exampleFormControlSelect" name="role" required>
                                 <option value="1">External Examiner</option>
                                 <option value="0">Internal Lecturer</option>
+                                <option value="2">Examination Officer</option>
                             </select>
                         </div>
                             <div class="input-group input-group-static mb-4" style="padding-left: 15px; padding-right: 15px;">

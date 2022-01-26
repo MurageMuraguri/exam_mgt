@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\Role_admin;
 use App\Http\Middleware\Role_examination_officer;
+use App\Models\Exam;
 use App\Models\ExamPeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExamPeriodController extends Controller
 {
@@ -14,8 +16,10 @@ class ExamPeriodController extends Controller
     }
 
     public function index(){
-
-        return view('exam_period');
+        $exams = ExamPeriod::all();
+        return view('exam_period',[
+            'exams' => $exams
+        ]);
     }
 
     public function insert(Request $request){
@@ -31,5 +35,12 @@ class ExamPeriodController extends Controller
           return back()->with('error','Creation unsuccessful, try again');
       }
 
+    }
+
+    public function delete_exam_period($id){
+        $period_delete = ExamPeriod::findorFail($id);
+        $period_delete->delete();
+
+        return back()->with('status','Exam period deleted');
     }
 }

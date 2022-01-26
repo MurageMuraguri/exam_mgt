@@ -29,8 +29,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home',[
-            'role'=>$this->role
-        ]);
+        $user = Auth::user();
+        $role = $user->role;
+
+        switch($role){
+            case 0:
+                return redirect('/my_activities');
+                break;
+            case 1:
+                return redirect('/my_exams');
+                break;
+            case 2:
+                return redirect('/exam_period');
+                break;
+            default:
+                return redirect('/profile');
+                break;
+        }
+
     }
 }

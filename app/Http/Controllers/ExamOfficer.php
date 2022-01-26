@@ -25,7 +25,10 @@ class ExamOfficer extends Controller
     }
 
     public function usersOfficer(){
-        return view ('users_officer');
+        $users = User::all();
+        return view ('users_officer',[
+            'users'=>$users
+        ]);
     }
 
     public function officer_newUser(Request $request){
@@ -111,6 +114,14 @@ class ExamOfficer extends Controller
     public function delete_exam($exam_id){
         $exam_delete = Exam::findorFail($exam_id);
         $exam_delete->delete();
+
+        return back()->with('status','Exam deleted successfully');
+
+    }
+
+    public function delete_user($id){
+        $user_delete = User::findorFail($id);
+        $user_delete->delete();
 
         return back()->with('status','Exam deleted successfully');
 
