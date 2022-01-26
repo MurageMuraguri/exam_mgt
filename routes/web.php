@@ -39,3 +39,8 @@ Route::post('/exam_period_insert',[\App\Http\Controllers\ExamPeriodController::c
 Route::get('/exams',[\App\Http\Controllers\ExamOfficer::class,'exams'])->name('exams');
 Route::post('/insert_exam',[\App\Http\Controllers\ExamOfficer::class,'insert_exam'])->name('insert_exam');
 Route::get('/exams/delete/{exam_id}',[\App\Http\Controllers\ExamOfficer::class,'delete_exam']);
+
+//Internal Lec
+Route::get('/my_activities',[\App\Http\Controllers\InternalLecController::class,'index'])->name('my_activities');
+Route::get('/my_schedule',[\App\Http\Controllers\InternalLecController::class,'schedule'])->name('my_schedule');
+Route::get('/my_deadline',[\App\Http\Controllers\InternalLecController::class,'deadlines'])->name('my_deadline');
