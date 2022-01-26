@@ -76,7 +76,7 @@
                         </div>
                             <div class="input-group input-group-static mb-4" style="padding-left: 15px; padding-right: 15px;">
                             <div class="text-center">
-                                <input type="submit" class="btn btn-md bg-gradient-info" name="Send registration email" value="Send registration email"></input>
+                                <input type="submit" class="btn btn-md bg-gradient-info" name="Send registration email" value="Send registration email"/>
                             </div>
                             </div>
                             </div></div>

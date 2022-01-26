@@ -27,3 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/Users_officer',[App\Http\Controllers\ExamOfficer::class, 'usersOfficer'])->name('Users_officer');
 Route::post('/Users_officer',[App\Http\Controllers\ExamOfficer::class, 'officer_newUser'])->name('Users_officer');
 
+//Profile
+Route::get('/profile',[\App\Http\Controllers\ProfileController::class,'index'])->name('profile');
+Route::post('/updateInfo',[\App\Http\Controllers\ProfileController::class,'updateInfo'])->name('updateInfo');
