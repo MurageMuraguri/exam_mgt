@@ -32,7 +32,7 @@
 
 </head>
 <body class = "g-sidenav-show  bg-gray-200">
-@include('layouts.sidenav2')
+
 <div>
     {{--    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">--}}
     {{--        <div class="container">--}}
@@ -109,7 +109,6 @@
             </button>
         </div>
     @endif
-
     @yield('content')
 </main>
 </div>

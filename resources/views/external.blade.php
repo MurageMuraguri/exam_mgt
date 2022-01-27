@@ -59,7 +59,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-sm bg-gradient-info">View</button>
+                                                <a type="button" href="{{URL::to('e_view_exam/')}}{{'/'.$exam->id}}" class="btn btn-sm bg-gradient-info">View</a>
                                             </td>
                                     </tr>
                                     @endforeach

@@ -46,7 +46,11 @@ Route::get('/exams/delete/{id}',[\App\Http\Controllers\ExamOfficer::class,'delet
 Route::get('/my_activities',[\App\Http\Controllers\InternalLecController::class,'index'])->name('my_activities');
 Route::get('/my_schedule',[\App\Http\Controllers\InternalLecController::class,'schedule'])->name('my_schedule');
 Route::get('/my_deadline',[\App\Http\Controllers\InternalLecController::class,'deadlines'])->name('my_deadline');
+Route::get('/view_exam/{id}',[\App\Http\Controllers\InternalLecController::class,'view_exam'])->name('view_exam');
+Route::post('/submit_lec',[\App\Http\Controllers\InternalLecController::class,'submit'])->name('submit_lec');
 
 //External examiner
 Route::get('/my_exams',[\App\Http\Controllers\ExternalExaminerController::class,'index'])->name('my_exams');
 Route::get('/ex_deadline',[\App\Http\Controllers\ExternalExaminerController::class,'deadlines'])->name('ex_deadline');
+Route::get('/e_view_exam/{id}',[\App\Http\Controllers\ExternalExaminerController::class,'e_view_exam'])->name('e_view_exam');
+Route::post('/submit_ex',[\App\Http\Controllers\ExternalExaminerController::class,'submit'])->name('submit_ex');
